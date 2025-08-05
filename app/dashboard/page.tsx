@@ -14,7 +14,7 @@ import {
   PlayIcon,
   PauseIcon
 } from '@heroicons/react/24/outline'
-import ProtectedRoute from '@/components/ProtectedRoute'
+import ProtectedRoute from '../../components/ProtectedRoute'
 
 
 interface Chatbot {
