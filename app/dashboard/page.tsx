@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useSession, signOut } from 'next-auth/react'
-import { 
+import {
   ChatBubbleLeftRightIcon,
   PlusIcon,
   ChartBarIcon,
@@ -14,8 +14,7 @@ import {
   PlayIcon,
   PauseIcon
 } from '@heroicons/react/24/outline'
-
-
+import Image from 'next/image'
 
 interface Chatbot {
   id: string
@@ -70,7 +69,7 @@ export default function DashboardPage() {
   }, [])
 
   const toggleChatbotStatus = (id: string) => {
-    setChatbots(prev => prev.map(bot => 
+    setChatbots(prev => prev.map(bot =>
       bot.id === id ? { ...bot, isActive: !bot.isActive } : bot
     ))
   }
@@ -82,40 +81,47 @@ export default function DashboardPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue"></div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="bg-white shadow-sm border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center">
-                <h1 className="text-2xl font-bold text-gradient">AutomateHub Studio</h1>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-600">Welcome back, {session?.user?.name || 'Admin'}</span>
-                <button 
-                  onClick={() => signOut()}
-                  className="text-red-600 hover:text-red-700"
-                >
-                  Sign Out
-                </button>
-                <a href="/" className="text-primary-600 hover:text-primary-700">
-                  ← Back to Home
-                </a>
-              </div>
+    <div className="min-h-screen bg-gray-50 font-montserrat">
+      {/* Header */}
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Image
+                src="/HeaderLogo.png"
+                alt="AutomateHub Studio"
+                width={40}
+                height={40}
+                className="mr-3"
+              />
+              <h1 className="text-2xl font-bold text-gradient">AutomateHub Studio</h1>
+            </div>
+            <div className="flex items-center space-x-4">
+              <span className="text-sm text-gray-600">Welcome back, {session?.user?.name || 'Admin'}</span>
+              <button
+                onClick={() => signOut()}
+                className="text-red-600 hover:text-red-700 transition-colors"
+              >
+                Sign Out
+              </button>
+              <a href="/" className="text-brand-blue hover:text-blue-700 transition-colors">
+                ← Back to Home
+              </a>
             </div>
           </div>
         </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
+          <h1 className="text-3xl font-bold text-brand-dark mb-2">Dashboard</h1>
           <p className="text-gray-600">Manage your AI chatbots and monitor performance</p>
         </div>
 
@@ -129,11 +135,11 @@ export default function DashboardPage() {
           >
             <div className="flex items-center">
               <div className="p-2 bg-blue-100 rounded-lg">
-                <ChatBubbleLeftRightIcon className="w-6 h-6 text-blue-600" />
+                <ChatBubbleLeftRightIcon className="w-6 h-6 text-brand-blue" />
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Active Chatbots</p>
-                <p className="text-2xl font-bold text-gray-900">{chatbots.filter(bot => bot.isActive).length}</p>
+                <p className="text-2xl font-bold text-brand-dark">{chatbots.filter(bot => bot.isActive).length}</p>
               </div>
             </div>
           </motion.div>
@@ -150,7 +156,7 @@ export default function DashboardPage() {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Total Conversations</p>
-                <p className="text-2xl font-bold text-gray-900">{totalConversations}</p>
+                <p className="text-2xl font-bold text-brand-dark">{totalConversations}</p>
               </div>
             </div>
           </motion.div>
@@ -167,7 +173,7 @@ export default function DashboardPage() {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Total Messages</p>
-                <p className="text-2xl font-bold text-gray-900">{totalMessages}</p>
+                <p className="text-2xl font-bold text-brand-dark">{totalMessages}</p>
               </div>
             </div>
           </motion.div>
@@ -184,7 +190,7 @@ export default function DashboardPage() {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Avg Response Time</p>
-                <p className="text-2xl font-bold text-gray-900">{avgResponseTime.toFixed(1)}s</p>
+                <p className="text-2xl font-bold text-brand-dark">{avgResponseTime.toFixed(1)}s</p>
               </div>
             </div>
           </motion.div>
@@ -203,9 +209,9 @@ export default function DashboardPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center ${
+                  className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center transition-colors ${
                     activeTab === tab.id
-                      ? 'border-primary-500 text-primary-600'
+                      ? 'border-brand-blue text-brand-blue'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -220,7 +226,7 @@ export default function DashboardPage() {
             {activeTab === 'overview' && (
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Recent Activity</h2>
+                  <h2 className="text-xl font-semibold text-brand-dark">Recent Activity</h2>
                   <button className="btn-primary flex items-center">
                     <PlusIcon className="w-4 h-4 mr-2" />
                     New Chatbot
@@ -230,7 +236,7 @@ export default function DashboardPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Recent Conversations */}
                   <div className="bg-gray-50 rounded-lg p-6">
-                    <h3 className="font-semibold text-gray-900 mb-4">Recent Conversations</h3>
+                    <h3 className="font-semibold text-brand-dark mb-4">Recent Conversations</h3>
                     <div className="space-y-3">
                       {[1, 2, 3].map((i) => (
                         <div key={i} className="flex items-center justify-between p-3 bg-white rounded-lg">
@@ -248,11 +254,11 @@ export default function DashboardPage() {
 
                   {/* Quick Actions */}
                   <div className="bg-gray-50 rounded-lg p-6">
-                    <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                    <h3 className="font-semibold text-brand-dark mb-4">Quick Actions</h3>
                     <div className="space-y-3">
                       <button className="w-full text-left p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors">
                         <div className="flex items-center">
-                          <PlusIcon className="w-5 h-5 text-primary-600 mr-3" />
+                          <PlusIcon className="w-5 h-5 text-brand-blue mr-3" />
                           <div>
                             <p className="font-medium text-sm">Create New Chatbot</p>
                             <p className="text-xs text-gray-500">Set up a new AI assistant</p>
@@ -261,7 +267,7 @@ export default function DashboardPage() {
                       </button>
                       <button className="w-full text-left p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors">
                         <div className="flex items-center">
-                          <ChartBarIcon className="w-5 h-5 text-primary-600 mr-3" />
+                          <ChartBarIcon className="w-5 h-5 text-brand-blue mr-3" />
                           <div>
                             <p className="font-medium text-sm">View Analytics</p>
                             <p className="text-xs text-gray-500">Check performance metrics</p>
@@ -270,7 +276,7 @@ export default function DashboardPage() {
                       </button>
                       <button className="w-full text-left p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors">
                         <div className="flex items-center">
-                          <CogIcon className="w-5 h-5 text-primary-600 mr-3" />
+                          <CogIcon className="w-5 h-5 text-brand-blue mr-3" />
                           <div>
                             <p className="font-medium text-sm">Configure Settings</p>
                             <p className="text-xs text-gray-500">Update chatbot settings</p>
@@ -286,7 +292,7 @@ export default function DashboardPage() {
             {activeTab === 'chatbots' && (
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Your Chatbots</h2>
+                  <h2 className="text-xl font-semibold text-brand-dark">Your Chatbots</h2>
                   <button className="btn-primary flex items-center">
                     <PlusIcon className="w-4 h-4 mr-2" />
                     New Chatbot
@@ -303,16 +309,16 @@ export default function DashboardPage() {
                     >
                       <div className="flex justify-between items-start mb-4">
                         <div>
-                          <h3 className="font-semibold text-gray-900">{chatbot.name}</h3>
+                          <h3 className="font-semibold text-brand-dark">{chatbot.name}</h3>
                           <p className="text-sm text-gray-600">{chatbot.description}</p>
                         </div>
                         <div className="flex items-center space-x-2">
                           <button
                             onClick={() => toggleChatbotStatus(chatbot.id)}
-                            className={`p-2 rounded-lg ${
-                              chatbot.isActive 
-                                ? 'bg-green-100 text-green-600' 
-                                : 'bg-gray-100 text-gray-600'
+                            className={`p-2 rounded-lg transition-colors ${
+                              chatbot.isActive
+                                ? 'bg-green-100 text-green-600 hover:bg-green-200'
+                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                             }`}
                           >
                             {chatbot.isActive ? (
@@ -321,13 +327,13 @@ export default function DashboardPage() {
                               <PlayIcon className="w-4 h-4" />
                             )}
                           </button>
-                          <button className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                          <button className="p-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition-colors">
                             <EyeIcon className="w-4 h-4" />
                           </button>
-                          <button className="p-2 bg-gray-100 text-gray-600 rounded-lg">
+                          <button className="p-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition-colors">
                             <PencilIcon className="w-4 h-4" />
                           </button>
-                          <button className="p-2 bg-red-100 text-red-600 rounded-lg">
+                          <button className="p-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors">
                             <TrashIcon className="w-4 h-4" />
                           </button>
                         </div>
@@ -335,15 +341,15 @@ export default function DashboardPage() {
 
                       <div className="grid grid-cols-3 gap-4 text-center">
                         <div>
-                          <p className="text-2xl font-bold text-gray-900">{chatbot.analytics.totalConversations}</p>
+                          <p className="text-2xl font-bold text-brand-dark">{chatbot.analytics.totalConversations}</p>
                           <p className="text-xs text-gray-600">Conversations</p>
                         </div>
                         <div>
-                          <p className="text-2xl font-bold text-gray-900">{chatbot.analytics.totalMessages}</p>
+                          <p className="text-2xl font-bold text-brand-dark">{chatbot.analytics.totalMessages}</p>
                           <p className="text-xs text-gray-600">Messages</p>
                         </div>
                         <div>
-                          <p className="text-2xl font-bold text-gray-900">{chatbot.analytics.avgResponseTime}s</p>
+                          <p className="text-2xl font-bold text-brand-dark">{chatbot.analytics.avgResponseTime}s</p>
                           <p className="text-xs text-gray-600">Avg Response</p>
                         </div>
                       </div>
@@ -351,8 +357,8 @@ export default function DashboardPage() {
                       <div className="mt-4 pt-4 border-t border-gray-200">
                         <div className="flex justify-between items-center">
                           <span className={`text-xs px-2 py-1 rounded-full ${
-                            chatbot.isActive 
-                              ? 'bg-green-100 text-green-800' 
+                            chatbot.isActive
+                              ? 'bg-green-100 text-green-800'
                               : 'bg-gray-100 text-gray-800'
                           }`}>
                             {chatbot.isActive ? 'Active' : 'Inactive'}
@@ -370,7 +376,7 @@ export default function DashboardPage() {
 
             {activeTab === 'analytics' && (
               <div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">Analytics & Reports</h2>
+                <h2 className="text-xl font-semibold text-brand-dark mb-6">Analytics & Reports</h2>
                 <div className="bg-gray-50 rounded-lg p-6 text-center">
                   <ChartBarIcon className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600">Detailed analytics and reporting features coming soon!</p>
@@ -380,7 +386,7 @@ export default function DashboardPage() {
 
             {activeTab === 'settings' && (
               <div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">Account Settings</h2>
+                <h2 className="text-xl font-semibold text-brand-dark mb-6">Account Settings</h2>
                 <div className="bg-gray-50 rounded-lg p-6 text-center">
                   <CogIcon className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600">Account settings and configuration options coming soon!</p>
