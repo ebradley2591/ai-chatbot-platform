@@ -18,13 +18,13 @@ interface Message {
 }
 
 const demoResponses = {
-  greeting: "Hello! I'm your AI assistant. I can help you with business inquiries, appointment scheduling, and general questions. How can I assist you today?",
+  greeting: "Hello! I'm your AI assistant. I can help you with business inquiries, answer questions about our services, hours, and pricing. How can I assist you today?",
   hours: "Our business hours are Monday-Friday 9:00 AM - 6:00 PM, and Saturday 10:00 AM - 4:00 PM. We're closed on Sundays.",
   pricing: "Our services start at $99 for basic packages. For detailed pricing information, I can connect you with our team or you can visit our pricing page.",
-  appointment: "I'd be happy to help you schedule an appointment! What type of service are you looking for? I can check our availability and book you in.",
-  contact: "You can reach us at (555) 123-4567 or email us at info@business.com. I can also schedule a call back if you prefer.",
+  appointment: "I can help you with information about our services! For scheduling appointments, please contact us directly at (555) 123-4567 or email us at info@business.com.",
+  contact: "You can reach us at (555) 123-4567 or email us at info@business.com. I'm here to answer your questions about our services and business information.",
   services: "We offer a wide range of services including consultation, implementation, and ongoing support. What specific area are you interested in?",
-  default: "Thank you for your question! I'm here to help with any business-related inquiries. Could you please provide more details so I can assist you better?"
+  default: "Thank you for your question! I'm here to help with business-related inquiries about our services, hours, pricing, and contact information. Could you please provide more details so I can assist you better?"
 }
 
 export default function DemoPage() {
@@ -110,8 +110,8 @@ export default function DemoPage() {
   const quickQuestions = [
     "What are your business hours?",
     "How much do your services cost?",
-    "Can I schedule an appointment?",
-    "What services do you offer?"
+    "What services do you offer?",
+    "How can I contact you?"
   ]
 
   return (
@@ -268,19 +268,19 @@ export default function DemoPage() {
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    Natural conversation
+                    Business information sharing
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    Business context awareness
+                    Hours and pricing answers
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    Appointment scheduling
+                    Contact information
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    Lead qualification
+                    Service descriptions
                   </li>
                 </ul>
               </div>

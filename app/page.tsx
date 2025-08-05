@@ -36,7 +36,7 @@ export default function HomePage() {
                 for Small Businesses
               </div>
               <p className="text-lg md:text-xl mb-8 text-brand-dark/80 max-w-2xl mx-auto">
-                Transform your business with AI-powered chatbots. 24/7 customer support, lead generation, and appointment scheduling. 
+                Transform your business with AI-powered chatbots. Provide instant customer support and answer common business questions. 
                 Built by AutomateHub Studio for modern automation solutions.
               </p>
             </motion.div>
@@ -72,18 +72,18 @@ export default function HomePage() {
             >
               <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
                 <ChatBubbleLeftRightIcon className="w-12 h-12 text-brand-blue mb-4 mx-auto" />
-                <h3 className="text-lg font-semibold text-brand-dark mb-2 text-center">24/7 Support</h3>
-                <p className="text-sm text-gray-600 text-center">Never miss a customer inquiry with round-the-clock AI assistance</p>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2 text-center">Instant Support</h3>
+                <p className="text-sm text-gray-600 text-center">Provide immediate answers to common customer questions</p>
               </div>
               <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
                 <RocketLaunchIcon className="w-12 h-12 text-brand-gold mb-4 mx-auto" />
-                <h3 className="text-lg font-semibold text-brand-dark mb-2 text-center">Lead Generation</h3>
-                <p className="text-sm text-gray-600 text-center">Capture and qualify leads automatically with intelligent conversations</p>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2 text-center">Business Information</h3>
+                <p className="text-sm text-gray-600 text-center">Share hours, pricing, services, and contact details automatically</p>
               </div>
               <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
                 <ShieldCheckIcon className="w-12 h-12 text-brand-blue mb-4 mx-auto" />
-                <h3 className="text-lg font-semibold text-brand-dark mb-2 text-center">Secure & Reliable</h3>
-                <p className="text-sm text-gray-600 text-center">Enterprise-grade security with 99.9% uptime guarantee</p>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2 text-center">Professional & Reliable</h3>
+                <p className="text-sm text-gray-600 text-center">Consistent, helpful responses that represent your business well</p>
               </div>
             </motion.div>
           </div>
@@ -100,11 +100,11 @@ export default function HomePage() {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4">
-                Why Choose Our AI Chatbots?
+                What Our AI Chatbots Can Do
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Built with the same expertise that powers Microsoft 365 automation solutions. 
-                Professional, reliable, and designed for business growth.
+                Professional, reliable, and designed to help your business.
               </p>
             </motion.div>
 
@@ -112,38 +112,38 @@ export default function HomePage() {
               {[
                 {
                   icon: ChatBubbleLeftRightIcon,
-                  title: "Smart Conversations",
-                  description: "AI-powered responses that understand context and provide helpful, accurate information",
+                  title: "Smart Responses",
+                  description: "AI-powered responses that understand common business questions and provide helpful information",
                   color: "text-brand-blue"
                 },
                 {
                   icon: ClockIcon,
-                  title: "Instant Response",
-                  description: "Customers get immediate answers, reducing wait times and improving satisfaction",
+                  title: "Instant Answers",
+                  description: "Customers get immediate responses to questions about hours, pricing, and services",
                   color: "text-brand-gold"
                 },
                 {
                   icon: CheckCircleIcon,
-                  title: "Easy Integration",
-                  description: "Simple setup process with one-line code integration to your existing website",
+                  title: "Business Information",
+                  description: "Automatically share your business hours, pricing, services, and contact details",
                   color: "text-brand-blue"
                 },
                 {
                   icon: StarIcon,
-                  title: "Custom Training",
-                  description: "Train your chatbot with your business knowledge, products, and services",
+                  title: "Professional Service",
+                  description: "Consistent, helpful responses that maintain your business's professional image",
                   color: "text-brand-gold"
                 },
                 {
                   icon: ShieldCheckIcon,
-                  title: "Data Security",
-                  description: "Enterprise-grade security with data encryption and privacy compliance",
+                  title: "Reliable Support",
+                  description: "Dependable chatbot that's always available to help your customers",
                   color: "text-brand-blue"
                 },
                 {
                   icon: RocketLaunchIcon,
-                  title: "Scalable Growth",
-                  description: "Grow with your business - handle unlimited conversations and customers",
+                  title: "Business Growth",
+                  description: "Improve customer satisfaction and reduce support workload with automated responses",
                   color: "text-brand-gold"
                 }
               ].map((feature, index) => (
@@ -174,10 +174,10 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Transform Your Business?
+                Ready to Improve Your Customer Support?
               </h2>
               <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                Join hundreds of small businesses already using our AI chatbots to improve customer service and drive growth.
+                Join small businesses using our AI chatbots to provide better customer service and reduce support workload.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
