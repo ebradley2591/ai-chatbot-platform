@@ -1,5 +1,6 @@
 require('dotenv').config({ path: '.env.local' });
 const { PrismaClient } = require('@prisma/client')
+const bcrypt = require('bcryptjs')
 
 const prisma = new PrismaClient()
 
@@ -7,16 +8,19 @@ async function main() {
   console.log('Setting up MongoDB database for AI Chatbot Platform...')
 
   // Create sample admin user first
+  const hashedPassword = await bcrypt.hash('admin123', 10) // Change this password!
+  
   const adminUser = await prisma.user.create({
     data: {
-      email: 'admin@automatehubstudio.com',
+      email: 'contact@automatehubstudio.com',
       name: 'Admin User',
-      password: '$2b$10$example.hash.here', // You'll need to hash this properly
+      password: hashedPassword,
       role: 'ADMIN'
     }
   })
 
   console.log('✅ Admin user created:', adminUser.email)
+  console.log('📝 Default password: admin123 (CHANGE THIS IMMEDIATELY!)')
 
   // Create sample business
   const sampleBusiness = await prisma.business.create({
@@ -100,7 +104,7 @@ async function main() {
       config: {
         welcomeMessage: 'Hello! I\'m your AI assistant. How can I help you today?',
         businessHours: 'Mon-Fri 9AM-6PM EST',
-        contactEmail: 'support@automatehubstudio.com',
+        contactEmail: 'contact@automatehubstudio.com',
         services: [
           'AI Chatbot Development',
           'Business Process Automation',
@@ -115,10 +119,10 @@ async function main() {
 
   console.log('\n🎉 Database setup complete!')
   console.log('\nNext steps:')
-  console.log('1. Update your .env file with your MongoDB connection string')
-  console.log('2. Run: npx prisma generate')
-  console.log('3. Run: npx prisma db push')
-  console.log('4. Start your development server: npm run dev')
+  console.log('1. Test the admin login with: contact@automatehubstudio.com / admin123')
+  console.log('2. CHANGE THE DEFAULT PASSWORD IMMEDIATELY!')
+  console.log('3. Test all functionality in production')
+  console.log('4. Set up email configuration')
 }
 
 main()
