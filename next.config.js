@@ -14,8 +14,6 @@ const nextConfig = {
         fs: false,
       };
     }
-    // Disable webpack caching to fix build issues
-    config.cache = false;
     return config;
   },
 }
