@@ -15,6 +15,7 @@ import {
   PauseIcon
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Chatbot {
   id: string
@@ -110,8 +111,14 @@ export default function DashboardPage() {
               >
                 Sign Out
               </button>
+              <Link
+                href="https://automatehubstudio.com"
+                className="text-brand-blue hover:text-blue-700 transition-colors"
+              >
+                ← Main Site
+              </Link>
               <a href="/" className="text-brand-blue hover:text-blue-700 transition-colors">
-                ← Back to Home
+                ← Home
               </a>
             </div>
           </div>

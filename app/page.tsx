@@ -11,10 +11,43 @@ import {
   StarIcon,
   ArrowRightIcon
 } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Navigation Header */}
+      <nav className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Image
+                src="/HeaderLogo.png"
+                alt="AutomateHub Studio"
+                width={40}
+                height={40}
+                className="mr-3"
+              />
+              <h1 className="text-2xl font-bold text-gradient">AutomateHub Studio</h1>
+            </div>
+            <div className="flex items-center space-x-6">
+              <Link
+                href="https://automatehubstudio.com"
+                className="text-brand-blue hover:text-blue-700 transition-colors font-medium"
+              >
+                ← Back to Main Site
+              </Link>
+              <Link
+                href="/demo"
+                className="btn-primary"
+              >
+                Try Demo
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-[80vh] pt-16 pb-24 bg-gradient-to-b from-brand-blue via-blue-400 to-white animate-fade-in">
         <div className="flex flex-col items-center w-full max-w-4xl mx-auto px-4">
@@ -221,7 +254,7 @@ export default function HomePage() {
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-300">
-                <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
+                <li><Link href="https://automatehubstudio.com" className="hover:text-white transition-colors">Main Site</Link></li>
                 <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link></li>
                 <li><Link href="/terms" className="hover:text-white transition-colors">Terms</Link></li>
               </ul>
