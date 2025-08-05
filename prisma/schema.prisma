@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  name      String?
+  password  String
+  role      UserRole @default(CLIENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  businesses Business[]
+  sessions   Session[]
+}
+
+model Business {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  website     String?
+  industry    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  userId      String @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chatbots    Chatbot[]
+  plans       Plan[]
+}
+
+model Plan {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   // Basic, Standard, Premium
+  price       Float
+  setupFee    Float
+  features    String[] // Array of features
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  businessId  String @db.ObjectId
+  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  status    SubscriptionStatus @default(ACTIVE)
+  startDate DateTime @default(now())
+  endDate   DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  planId    String @db.ObjectId
+  plan      Plan     @relation(fields: [planId], references: [id])
+  businessId String @db.ObjectId
+  business  Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+}
+
+model Chatbot {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  isActive    Boolean  @default(true)
+  config      Json     // Chatbot configuration
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  businessId  String @db.ObjectId
+  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  conversations Conversation[]
+  analytics   ChatbotAnalytics[]
+}
+
+model Conversation {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionId String
+  messages  Json     // Array of messages
+  metadata  Json?    // Additional conversation data
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  chatbotId String @db.ObjectId
+  chatbot   Chatbot  @relation(fields: [chatbotId], references: [id], onDelete: Cascade)
+}
+
+model ChatbotAnalytics {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  date      DateTime
+  metrics   Json     // Analytics data
+  createdAt DateTime @default(now())
+
+  // Relations
+  chatbotId String @db.ObjectId
+  chatbot   Chatbot  @relation(fields: [chatbotId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId    String @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum UserRole {
+  ADMIN
+  CLIENT
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  TRIAL
+} 
