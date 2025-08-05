@@ -14,8 +14,7 @@ import {
   PlayIcon,
   PauseIcon
 } from '@heroicons/react/24/outline'
-import Image from 'next/image'
-import Link from 'next/link'
+import Navigation from '@/components/Navigation'
 
 interface Chatbot {
   id: string
@@ -89,41 +88,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-montserrat">
-      {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Image
-                src="/HeaderLogo.png"
-                alt="AutomateHub Studio"
-                width={40}
-                height={40}
-                className="mr-3"
-              />
-              <h1 className="text-2xl font-bold text-gradient">AutomateHub Studio</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">Welcome back, {session?.user?.name || 'Admin'}</span>
-              <button
-                onClick={() => signOut()}
-                className="text-red-600 hover:text-red-700 transition-colors"
-              >
-                Sign Out
-              </button>
-              <Link
-                href="https://automatehubstudio.com"
-                className="text-brand-blue hover:text-blue-700 transition-colors"
-              >
-                ← Main Site
-              </Link>
-              <a href="/" className="text-brand-blue hover:text-blue-700 transition-colors">
-                ← Home
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navigation />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Header */}
