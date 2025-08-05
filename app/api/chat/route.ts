@@ -94,23 +94,9 @@ ${businessContext.systemPrompt || ''}`
       data: { messages: updatedMessages }
     })
 
-    // Track analytics
-    await prisma.chatbotAnalytics.upsert({
-      where: {
-        chatbotId_date: {
-          chatbotId,
-          date: new Date().toISOString().split('T')[0]
-        }
-      },
-      update: {
-        metrics: {
-          increment: {
-            totalMessages: 1,
-            userMessages: 1
-          }
-        }
-      },
-      create: {
+    // Track analytics (simplified for now)
+    await prisma.chatbotAnalytics.create({
+      data: {
         chatbotId,
         date: new Date(),
         metrics: {
