@@ -5,64 +5,7 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('Setting up MongoDB database for AI Chatbot Platform...')
 
-  // Create sample plans
-  const basicPlan = await prisma.plan.create({
-    data: {
-      name: 'Basic',
-      price: 29.99,
-      setupFee: 99.00,
-      features: [
-        '1 AI Chatbot',
-        'Basic FAQ Training',
-        'Website Integration',
-        'Email Support',
-        'Monthly Analytics'
-      ],
-      isActive: true
-    }
-  })
-
-  const standardPlan = await prisma.plan.create({
-    data: {
-      name: 'Standard',
-      price: 59.99,
-      setupFee: 199.00,
-      features: [
-        '2 AI Chatbots',
-        'Advanced Training',
-        'Appointment Scheduling',
-        'Lead Capture',
-        'CRM Integration',
-        'Priority Support'
-      ],
-      isActive: true
-    }
-  })
-
-  const premiumPlan = await prisma.plan.create({
-    data: {
-      name: 'Premium',
-      price: 99.99,
-      setupFee: 299.00,
-      features: [
-        'Unlimited Chatbots',
-        'Custom AI Training',
-        'Multi-language Support',
-        'Advanced Analytics',
-        'API Access',
-        'White-label Options',
-        '24/7 Support'
-      ],
-      isActive: true
-    }
-  })
-
-  console.log('✅ Sample plans created:')
-  console.log(`- Basic: $${basicPlan.price}/month`)
-  console.log(`- Standard: $${standardPlan.price}/month`)
-  console.log(`- Premium: $${premiumPlan.price}/month`)
-
-  // Create sample admin user
+  // Create sample admin user first
   const adminUser = await prisma.user.create({
     data: {
       email: 'admin@automatehubstudio.com',
@@ -86,6 +29,66 @@ async function main() {
   })
 
   console.log('✅ Sample business created:', sampleBusiness.name)
+
+  // Create sample plans (now with business reference)
+  const basicPlan = await prisma.plan.create({
+    data: {
+      name: 'Basic',
+      price: 29.99,
+      setupFee: 99.00,
+      features: [
+        '1 AI Chatbot',
+        'Basic FAQ Training',
+        'Website Integration',
+        'Email Support',
+        'Monthly Analytics'
+      ],
+      isActive: true,
+      businessId: sampleBusiness.id
+    }
+  })
+
+  const standardPlan = await prisma.plan.create({
+    data: {
+      name: 'Standard',
+      price: 59.99,
+      setupFee: 199.00,
+      features: [
+        '2 AI Chatbots',
+        'Advanced Training',
+        'Appointment Scheduling',
+        'Lead Capture',
+        'CRM Integration',
+        'Priority Support'
+      ],
+      isActive: true,
+      businessId: sampleBusiness.id
+    }
+  })
+
+  const premiumPlan = await prisma.plan.create({
+    data: {
+      name: 'Premium',
+      price: 99.99,
+      setupFee: 299.00,
+      features: [
+        'Unlimited Chatbots',
+        'Custom AI Training',
+        'Multi-language Support',
+        'Advanced Analytics',
+        'API Access',
+        'White-label Options',
+        '24/7 Support'
+      ],
+      isActive: true,
+      businessId: sampleBusiness.id
+    }
+  })
+
+  console.log('✅ Sample plans created:')
+  console.log(`- Basic: $${basicPlan.price}/month`)
+  console.log(`- Standard: $${standardPlan.price}/month`)
+  console.log(`- Premium: $${premiumPlan.price}/month`)
 
   // Create sample chatbot
   const sampleChatbot = await prisma.chatbot.create({

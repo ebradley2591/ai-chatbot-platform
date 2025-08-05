@@ -38,6 +38,7 @@ model Business {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   chatbots    Chatbot[]
   plans       Plan[]
+  subscriptions Subscription[]
 }
 
 model Plan {
