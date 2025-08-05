@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Providers from '@/components/Providers'
 
 export const metadata: Metadata = {
   title: 'AI Chatbot Support for Small Businesses | AutomateHub Studio',
@@ -22,9 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <Providers>
-          {children}
-        </Providers>
+        {children}
       </body>
     </html>
   )

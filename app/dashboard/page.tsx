@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useSession, signOut } from 'next-auth/react'
 import { 
   ChatBubbleLeftRightIcon,
   PlusIcon,
@@ -30,7 +29,6 @@ interface Chatbot {
 }
 
 export default function DashboardPage() {
-  const { data: session } = useSession()
   const [chatbots, setChatbots] = useState<Chatbot[]>([])
   const [activeTab, setActiveTab] = useState('overview')
   const [isLoading, setIsLoading] = useState(true)
@@ -96,13 +94,7 @@ export default function DashboardPage() {
                 <h1 className="text-2xl font-bold text-gradient">AutomateHub Studio</h1>
               </div>
               <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-600">Welcome back, {session?.user?.name || 'Admin'}</span>
-                <button 
-                  onClick={() => signOut()}
-                  className="text-red-600 hover:text-red-700"
-                >
-                  Sign Out
-                </button>
+                <span className="text-sm text-gray-600">Welcome back, Admin</span>
                 <a href="/" className="text-primary-600 hover:text-primary-700">
                   ← Back to Home
                 </a>

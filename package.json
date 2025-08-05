@@ -12,37 +12,37 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "next": "14.2.31",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "openai": "^4.20.0",
-    "langchain": "^0.0.200",
-    "prisma": "^5.6.0",
-    "@prisma/client": "^5.6.0",
-    "stripe": "^14.0.0",
-    "nodemailer": "^6.9.0",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "tailwindcss": "^3.3.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
+    "@auth/prisma-adapter": "^1.6.0",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "framer-motion": "^10.16.0",
-    "react-hook-form": "^7.47.0",
-    "zod": "^3.22.4",
     "@hookform/resolvers": "^3.3.2",
+    "@prisma/client": "^5.6.0",
+    "autoprefixer": "^10.4.16",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "framer-motion": "^10.16.0",
+    "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.0.200",
+    "next": "14.2.31",
     "next-auth": "^4.24.7",
-    "@auth/prisma-adapter": "^1.6.0",
-    "dotenv": "^16.4.5"
+    "nodemailer": "^6.9.0",
+    "openai": "^4.20.0",
+    "postcss": "^8.4.31",
+    "prisma": "^5.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.47.0",
+    "stripe": "^14.0.0",
+    "tailwindcss": "^3.3.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.8.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "typescript": "^5.2.0",
     "eslint": "^8.51.0",
-    "eslint-config-next": "^14.0.0"
+    "eslint-config-next": "^14.0.0",
+    "typescript": "^5.2.0"
   },
   "keywords": [
     "ai",
@@ -53,4 +53,4 @@
   ],
   "author": "AutomateHub Studio",
   "license": "MIT"
-} 
+}
