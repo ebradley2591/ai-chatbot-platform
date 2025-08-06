@@ -11,7 +11,7 @@
     "setup-db": "node setup-mongodb.js",
     "postinstall": "prisma generate"
   },
-      "dependencies": {
+  "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.3.2",
@@ -21,7 +21,7 @@
     "dotenv": "^16.4.5",
     "framer-motion": "^10.16.0",
     "jsonwebtoken": "^9.0.2",
-        "langchain": "^0.0.200",
+    "langchain": "^0.0.200",
     "next": "14.2.31",
     "next-auth": "^4.24.5",
     "nodemailer": "^6.9.0",
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.8.0",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "eslint": "^8.51.0",
